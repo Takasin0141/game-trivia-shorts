@@ -1,0 +1,53 @@
+name: daily-short
+
+# 毎日自動で1本生成してYouTubeにアップ。
+# cron はUTC。21:30 UTC = 翌06:30 JST(朝の投稿)。好みで変更可。
+# 手動実行(workflow_dispatch)でいつでもテストできる。
+on:
+  schedule:
+    - cron: "30 21 * * *"
+  workflow_dispatch:
+    inputs:
+      upload:
+        description: "YouTubeにアップロードする (false=生成のみ)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg & Japanese fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Build video
+        run: python scripts/build_video.py
+
+      - name: Upload artifact (always, for review)
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-short
+          path: out/video.mp4
+          retention-days: 7
+
+      - name: Upload to YouTube
+        if: ${{ github.event_name == 'schedule' || inputs.upload }}
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: python scripts/upload_youtube.py
