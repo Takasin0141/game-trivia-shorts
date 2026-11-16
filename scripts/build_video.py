@@ -106,9 +106,11 @@ def scene_clip(scene, dur, img, idx):
     with open(cap_file, "w") as f:
         f.write(scene.get("caption", ""))
     nframes = max(1, int(dur * FPS))
+    # 字幕は下三分の一に配置(text_align=C で中央揃え)。drawbox は h 式が使えないのでピクセル絶対値。
+    box_y, box_h = int(H * 0.60), int(H * 0.40)
     draw = (
         f"drawtext=textfile='{cap_file}':fontfile='{FONT}':fontsize=82:"
-        f"fontcolor=white:line_spacing=18:text_align=C:x=(w-text_w)/2:y=(h-text_h)/2:"
+        f"fontcolor=white:line_spacing=18:text_align=C:x=(w-text_w)/2:y=h*0.74-text_h/2:"
         f"borderw=6:bordercolor=black@0.9:shadowcolor=black@0.7:shadowx=3:shadowy=4"
     )
     if img:
@@ -118,12 +120,13 @@ def scene_clip(scene, dur, img, idx):
             f"zoompan=z='min(1.0+0.0007*on,1.14)':d={nframes}:"
             f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},"
             f"eq=brightness=-0.06:saturation=1.05,"
-            f"drawbox=x=0:y=h*0.62:w=w:h=h*0.38:color=black@0.45:t=fill,"
+            f"drawbox=x=0:y={box_y}:w={W}:h={box_h}:color=black@0.5:t=fill,"
             f"{draw},format=yuv420p"
         )
         ff(["-loop", "1", "-t", f"{dur}", "-i", img, "-vf", vf, "-r", str(FPS), out])
     else:
-        vf = (f"drawbox=x=0:y=h*0.60:w=w:h=h*0.40:color=black@0.35:t=fill,{draw},format=yuv420p")
+        vf = (f"drawbox=x=0:y={box_y}:w={W}:h={box_h}:color=black@0.35:t=fill,"
+              f"{draw},format=yuv420p")
         ff(["-f", "lavfi", "-i", f"color=c=0x0a0e1a:s={W}x{H}:d={dur}:r={FPS}",
             "-vf", vf, out])
     return out
