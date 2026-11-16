@@ -12,6 +12,10 @@ on:
         description: "YouTubeにアップロードする (false=生成のみ)"
         type: boolean
         default: true
+      topic_id:
+        description: "テスト用: 特定トピックを指定 (空=日付で自動選択)"
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -35,6 +39,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Build video
+        env:
+          TOPIC_ID: ${{ inputs.topic_id }}
         run: python scripts/build_video.py
 
       - name: Upload artifact (always, for review)

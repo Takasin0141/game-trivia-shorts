@@ -3,90 +3,85 @@
   "handle": "@game_kobeya",
   "start_date": "2026-11-17",
   "privacy": "private",
-  "_comment": "毎日 (今日の日付 - start_date) 日目 mod トピック数 で1本選ばれます。尽きる前に topics を追加してください。narration=読み上げ, caption=画面表示(改行は\\n), image_query=Wikimedia検索語(英語推奨), highlight=強調キーワード, kind=hook/outro/通常",
+  "_schema": "各scene: narration=読み上げ, lines=[[画面テキスト, フォントpx], ...], kw=蛍光ピルにする行(任意/linesのテキストと完全一致), image_file=CommonsファイルFile:... (任意), image_query=フォールバック検索語(英語推奨)。絵文字は使わない。先頭=フック(即本題), 末尾=アウトロでフックに回帰しループさせる。",
   "topics": [
     {
       "id": "nintendo-hanafuda",
-      "youtube_title": "任天堂、実は花札屋だった【ゲーム雑学】#shorts",
-      "description": "毎日1本、ゲームの雑学をお届け。\n\n#ゲーム #雑学 #任天堂 #レトロゲーム #shorts",
+      "youtube_title": "任天堂、ゲームより先に“アレ”を売ってた【ゲーム雑学】#shorts",
+      "description": "毎日1本、ゲームの雑学。\n\n#ゲーム #雑学 #任天堂 #レトロゲーム #shorts",
       "tags": ["ゲーム", "雑学", "任天堂", "歴史", "レトロゲーム"],
       "scenes": [
-        {"kind": "hook", "narration": "ゲーム界の王様、任天堂。その意外すぎる原点、知ってる？", "caption": "ゲーム界の王様\nその意外な原点", "image_query": "Nintendo Kyoto headquarters building"},
-        {"narration": "創業はなんと、1889年。明治時代だ。", "caption": "創業 1889年\n―明治時代―", "image_query": "Meiji era Kyoto Japan old photograph", "highlight": "1889年"},
-        {"narration": "でも、最初の商品はゲームじゃなかった。", "caption": "最初の商品は\nゲームじゃない", "image_query": "old Kyoto street historical photo"},
-        {"narration": "作っていたのは、花札。日本の伝統的なカードだ。", "caption": "作っていたのは\n花札", "image_query": "hanafuda japanese playing cards", "highlight": "花札"},
-        {"narration": "京都の小さな花札屋が、やがて世界のゲーム王になった。", "caption": "小さな花札屋が\n世界のゲーム王に", "image_query": "hanafuda cards koi koi"},
-        {"kind": "outro", "narration": "毎日1本、ゲームの雑学。", "caption": "毎日1本 ゲームの雑学\n@game_kobeya", "image_query": "retro arcade neon"}
+        {"narration": "任天堂って、ゲームより先に“アレ”を売ってたの、知ってる？", "lines": [["任天堂", 150], ["ゲームより先は…？", 58]], "image_file": "File:Nintendo 1889.jpg", "image_query": "Nintendo headquarters Kyoto old building"},
+        {"narration": "創業はなんと、1889年。明治時代だよ。", "lines": [["創業", 52], ["1889年", 150], ["明治時代！", 58]], "kw": "1889年", "image_query": "Meiji era Kyoto street old photograph"},
+        {"narration": "でも最初の商品は、ゲームじゃなかった。", "lines": [["最初の商品は", 72], ["ゲームじゃない", 72]], "image_query": "old Kyoto Meiji period photograph"},
+        {"narration": "正体は、花札。日本の伝統的なカードだ。", "lines": [["正体は", 54], ["花札", 184]], "kw": "花札", "image_query": "hanafuda japanese flower cards"},
+        {"narration": "この小さな花札屋が、のちに世界のゲーム王になる。", "lines": [["小さな花札屋が", 66], ["世界のゲーム王へ", 66]], "kw": "世界のゲーム王へ", "image_query": "hanafuda cards koi koi japanese"},
+        {"narration": "その会社が、任天堂。続きはまた明日。", "lines": [["その会社が…", 60], ["任天堂", 150], ["毎日ゲーム雑学・@ゲームの小部屋", 40]], "kw": "任天堂", "image_file": "File:Nintendo 1889.jpg", "image_query": "Nintendo headquarters Kyoto old building"}
       ]
     },
     {
       "id": "space-invaders-coin",
-      "youtube_title": "スペースインベーダーが100円玉を消した日【ゲーム雑学】#shorts",
-      "description": "毎日1本、ゲームの雑学をお届け。\n\n#ゲーム #雑学 #スペースインベーダー #レトロゲーム #shorts",
+      "youtube_title": "スペースインベーダーが100円玉を消した【ゲーム雑学】#shorts",
+      "description": "毎日1本、ゲームの雑学。\n\n#ゲーム #雑学 #スペースインベーダー #レトロゲーム #shorts",
       "tags": ["ゲーム", "雑学", "スペースインベーダー", "アーケード", "レトロゲーム"],
       "scenes": [
-        {"kind": "hook", "narration": "1978年、日本中から100円玉が消えた。犯人は、一台のゲーム。", "caption": "日本から\n100円玉が消えた", "image_query": "arcade cabinet 1980s"},
-        {"narration": "その名も、スペースインベーダー。", "caption": "スペースインベーダー", "image_query": "space invaders arcade machine museum", "highlight": "スペースインベーダー"},
-        {"narration": "遊びたい人が殺到し、専用の喫茶店まで生まれた。", "caption": "専用の喫茶店まで\n生まれた", "image_query": "retro japanese game center arcade"},
-        {"narration": "あまりに人が100円玉を使いすぎて、一時的に品薄になったとも言われる。", "caption": "100円玉が\n品薄に", "image_query": "japanese 100 yen coin", "highlight": "品薄"},
-        {"narration": "たった一台のゲームが、国の経済まで動かした。", "caption": "一台のゲームが\n経済を動かした", "image_query": "arcade cabinets row retro"},
-        {"kind": "outro", "narration": "毎日1本、ゲームの雑学。", "caption": "毎日1本 ゲームの雑学\n@game_kobeya", "image_query": "retro arcade neon"}
+        {"narration": "1978年、日本中から100円玉が消えた。犯人は、一台のゲーム。", "lines": [["日本から", 70], ["100円玉が消えた", 80]], "kw": "100円玉が消えた", "image_query": "space invaders arcade machine"},
+        {"narration": "その名も、スペースインベーダー。", "lines": [["犯人は", 54], ["インベーダー", 120]], "kw": "インベーダー", "image_query": "space invaders arcade cabinet museum"},
+        {"narration": "遊びたい人が殺到して、専用の喫茶店まで生まれた。", "lines": [["専用の喫茶店まで", 70], ["生まれた", 96]], "image_query": "retro japanese game center 1980s"},
+        {"narration": "みんなが100円玉を使いすぎて、一時、品薄になったとも言われる。", "lines": [["100円玉が", 72], ["品薄に", 120]], "kw": "品薄に", "image_query": "japanese 100 yen coin"},
+        {"narration": "たった一台のゲームが、国の経済まで動かした。続きはまた明日。", "lines": [["一台のゲームが", 66], ["経済を動かした", 72], ["@ゲームの小部屋", 44]], "kw": "経済を動かした", "image_query": "space invaders arcade machine"}
       ]
     },
     {
       "id": "tetris-origin",
       "youtube_title": "テトリスは“鉄のカーテン”の向こうで生まれた【ゲーム雑学】#shorts",
-      "description": "毎日1本、ゲームの雑学をお届け。\n\n#ゲーム #雑学 #テトリス #レトロゲーム #shorts",
+      "description": "毎日1本、ゲームの雑学。\n\n#ゲーム #雑学 #テトリス #レトロゲーム #shorts",
       "tags": ["ゲーム", "雑学", "テトリス", "歴史", "レトロゲーム"],
       "scenes": [
-        {"kind": "hook", "narration": "世界一有名なパズルゲーム、テトリス。生まれた場所が、すごい。", "caption": "テトリス\n生まれた場所が凄い", "image_query": "falling blocks puzzle abstract"},
-        {"narration": "舞台は1984年の、旧ソ連。", "caption": "1984年\n旧ソビエト連邦", "image_query": "Moscow 1980s Soviet Union", "highlight": "旧ソ連"},
-        {"narration": "作ったのは、国の研究所で働くプログラマーだった。", "caption": "国の研究所の\nプログラマー", "image_query": "vintage computer 1980s"},
-        {"narration": "冷戦のさなか、ゲームは鉄のカーテンを越えて世界へ広がった。", "caption": "鉄のカーテンを越え\n世界へ", "image_query": "cold war berlin wall"},
-        {"narration": "国境も、イデオロギーも超えた。それがテトリスだ。", "caption": "国境も思想も\n超えた", "image_query": "tetris blocks pattern"},
-        {"kind": "outro", "narration": "毎日1本、ゲームの雑学。", "caption": "毎日1本 ゲームの雑学\n@game_kobeya", "image_query": "retro arcade neon"}
+        {"narration": "世界一有名なパズル、テトリス。生まれた場所が、ヤバい。", "lines": [["テトリス", 130], ["生まれた場所がヤバい", 54]], "image_query": "tetris blocks falling pattern"},
+        {"narration": "舞台は1984年の、旧ソ連。", "lines": [["1984年", 110], ["旧ソ連", 120]], "kw": "旧ソ連", "image_query": "Moscow 1980s Soviet Union"},
+        {"narration": "作ったのは、国の研究所で働くプログラマー。", "lines": [["国の研究所の", 70], ["プログラマー", 86]], "image_query": "vintage soviet computer 1980s"},
+        {"narration": "冷戦のさなか、ゲームは鉄のカーテンを越えて世界へ広がった。", "lines": [["鉄のカーテンを越え", 62], ["世界へ", 120]], "kw": "鉄のカーテンを越え", "image_query": "cold war berlin wall"},
+        {"narration": "国境も、思想も超えた。それがテトリス。続きはまた明日。", "lines": [["国境も思想も", 70], ["超えた", 120], ["@ゲームの小部屋", 44]], "kw": "超えた", "image_query": "tetris blocks pattern"}
       ]
     },
     {
       "id": "pong-first-hit",
       "youtube_title": "世界初の大ヒットゲームは“故障”から始まった【ゲーム雑学】#shorts",
-      "description": "毎日1本、ゲームの雑学をお届け。\n\n#ゲーム #雑学 #PONG #レトロゲーム #shorts",
+      "description": "毎日1本、ゲームの雑学。\n\n#ゲーム #雑学 #PONG #レトロゲーム #shorts",
       "tags": ["ゲーム", "雑学", "ポン", "アタリ", "レトロゲーム"],
       "scenes": [
-        {"kind": "hook", "narration": "ゲーム産業を作った最初のヒット作。そのきっかけは、まさかの“故障”だった。", "caption": "最初のヒットは\n故障から始まった", "image_query": "Pong arcade game screen"},
-        {"narration": "1972年、アタリが出した『ポン』。", "caption": "1972年『ポン』", "image_query": "Atari Pong console", "highlight": "ポン"},
-        {"narration": "設置したゲーム機が、ある日動かなくなった。", "caption": "ある日\n動かなくなった", "image_query": "old arcade machine repair"},
-        {"narration": "原因は、コイン入れが満杯であふれていたこと。", "caption": "原因はコインの\n詰まりすぎ", "image_query": "coins quarters pile", "highlight": "満杯"},
-        {"narration": "それほど遊ばれていた。ゲームはここからビジネスになった。", "caption": "ここからゲームは\nビジネスに", "image_query": "retro arcade cabinets"},
-        {"kind": "outro", "narration": "毎日1本、ゲームの雑学。", "caption": "毎日1本 ゲームの雑学\n@game_kobeya", "image_query": "retro arcade neon"}
+        {"narration": "ゲーム産業を作った最初のヒット。きっかけは、まさかの故障だった。", "lines": [["最初のヒットは", 70], ["故障から", 110]], "kw": "故障から", "image_query": "Pong arcade game"},
+        {"narration": "1972年、アタリが出した、ポン。", "lines": [["1972年", 110], ["ポン", 130]], "kw": "ポン", "image_query": "Atari Pong console vintage"},
+        {"narration": "設置したゲーム機が、ある日動かなくなった。", "lines": [["ある日", 70], ["動かなくなった", 80]], "image_query": "old arcade machine vintage"},
+        {"narration": "原因は、コイン入れが満杯であふれていたこと。", "lines": [["コインが", 72], ["あふれてた", 110]], "kw": "あふれてた", "image_query": "coins quarters pile money"},
+        {"narration": "それほど遊ばれた。ここからゲームはビジネスになった。続きはまた明日。", "lines": [["ここからゲームは", 64], ["ビジネスに", 96], ["@ゲームの小部屋", 44]], "kw": "ビジネスに", "image_query": "retro arcade cabinets"}
       ]
     },
     {
-      "id": "gameboy-tetris-bundle",
+      "id": "gameboy-win",
       "youtube_title": "ゲームボーイが勝てた“本当の理由”【ゲーム雑学】#shorts",
-      "description": "毎日1本、ゲームの雑学をお届け。\n\n#ゲーム #雑学 #ゲームボーイ #任天堂 #shorts",
+      "description": "毎日1本、ゲームの雑学。\n\n#ゲーム #雑学 #ゲームボーイ #任天堂 #shorts",
       "tags": ["ゲーム", "雑学", "ゲームボーイ", "任天堂", "レトロゲーム"],
       "scenes": [
-        {"kind": "hook", "narration": "白黒で性能も低いゲームボーイが、なぜライバルに勝てた？", "caption": "白黒で低性能なのに\nなぜ勝てた？", "image_query": "Game Boy handheld console"},
-        {"narration": "ライバルはカラーで高性能。でも売れたのはゲームボーイ。", "caption": "カラーの敵に\n勝った", "image_query": "retro handheld game console"},
-        {"narration": "理由のひとつは、圧倒的なバッテリーの持ち。", "caption": "電池が\nとにかく長持ち", "image_query": "AA batteries", "highlight": "バッテリー"},
-        {"narration": "そして、誰もが遊べるテトリスを同梱したこと。", "caption": "テトリスを\n同梱した", "image_query": "tetris blocks pattern", "highlight": "テトリス"},
-        {"narration": "性能より、遊びやすさと一本の神ゲー。それが勝因だった。", "caption": "性能より\n遊びやすさ", "image_query": "Game Boy classic handheld"},
-        {"kind": "outro", "narration": "毎日1本、ゲームの雑学。", "caption": "毎日1本 ゲームの雑学\n@game_kobeya", "image_query": "retro arcade neon"}
+        {"narration": "白黒で低性能のゲームボーイ。なぜカラーのライバルに勝てた？", "lines": [["白黒で低性能", 70], ["なのに勝った", 80]], "kw": "なのに勝った", "image_query": "Nintendo Game Boy handheld console"},
+        {"narration": "ライバルはカラーで高性能。でも売れたのはゲームボーイ。", "lines": [["敵はカラー高性能", 58], ["でも負けた", 90]], "image_query": "retro handheld game console 1990s"},
+        {"narration": "理由のひとつは、圧倒的なバッテリーの持ち。", "lines": [["電池が", 72], ["超長持ち", 110]], "kw": "超長持ち", "image_query": "AA batteries"},
+        {"narration": "そして、誰もが遊べるテトリスを同梱したこと。", "lines": [["テトリスを", 72], ["同梱した", 110]], "kw": "同梱した", "image_query": "tetris blocks pattern"},
+        {"narration": "性能より、遊びやすさと一本の神ゲー。続きはまた明日。", "lines": [["性能より", 70], ["遊びやすさ", 96], ["@ゲームの小部屋", 44]], "kw": "遊びやすさ", "image_query": "Nintendo Game Boy classic"}
       ]
     },
     {
       "id": "arcade-high-score",
-      "youtube_title": "ハイスコアはなぜ3文字なのか【ゲーム雑学】#shorts",
-      "description": "毎日1本、ゲームの雑学をお届け。\n\n#ゲーム #雑学 #アーケード #レトロゲーム #shorts",
+      "youtube_title": "ハイスコアの名前がなぜ3文字なのか【ゲーム雑学】#shorts",
+      "description": "毎日1本、ゲームの雑学。\n\n#ゲーム #雑学 #アーケード #レトロゲーム #shorts",
       "tags": ["ゲーム", "雑学", "アーケード", "ハイスコア", "レトロゲーム"],
       "scenes": [
-        {"kind": "hook", "narration": "レトロゲームの名前入力、なぜ3文字しか入らない？", "caption": "名前が3文字しか\n入らない理由", "image_query": "arcade high score screen"},
-        {"narration": "理由は、当時のメモリがとても高価で貴重だったから。", "caption": "メモリが\n高価だった", "image_query": "vintage computer memory chip", "highlight": "メモリ"},
-        {"narration": "記録を残すたびに、容量を食う。だから最小限にした。", "caption": "容量を節約\nするため", "image_query": "retro circuit board"},
-        {"narration": "その名残で、今も“3文字のイニシャル”文化が残っている。", "caption": "3文字文化は\n今も残る", "image_query": "arcade cabinet joystick", "highlight": "3文字"},
-        {"narration": "小さな制約が、ゲームの文化を作った。", "caption": "制約が\n文化を作った", "image_query": "retro arcade cabinets row"},
-        {"kind": "outro", "narration": "毎日1本、ゲームの雑学。", "caption": "毎日1本 ゲームの雑学\n@game_kobeya", "image_query": "retro arcade neon"}
+        {"narration": "レトロゲームの名前入力、なぜ3文字しか入らない？", "lines": [["名前が3文字", 72], ["しか入らない理由", 58]], "image_query": "arcade high score screen pixel"},
+        {"narration": "理由は、当時のメモリがとても高価で貴重だったから。", "lines": [["メモリが", 72], ["超高価だった", 100]], "kw": "超高価だった", "image_query": "vintage computer memory chip"},
+        {"narration": "記録を残すたびに、容量を食う。だから最小限にした。", "lines": [["容量を節約", 72], ["するため", 96]], "image_query": "retro circuit board electronics"},
+        {"narration": "その名残で、今も3文字のイニシャル文化が残っている。", "lines": [["3文字文化は", 68], ["今も残る", 110]], "kw": "今も残る", "image_query": "arcade cabinet joystick retro"},
+        {"narration": "小さな制約が、ゲームの文化を作った。続きはまた明日。", "lines": [["制約が", 72], ["文化を作った", 96], ["@ゲームの小部屋", 44]], "kw": "文化を作った", "image_query": "retro arcade cabinets row"}
       ]
     }
   ]
