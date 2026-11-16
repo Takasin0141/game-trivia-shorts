@@ -117,7 +117,7 @@ def scene_clip(scene, dur, img, idx):
         vf = (
             f"scale={int(W*1.5)}:{int(H*1.5)}:force_original_aspect_ratio=increase,"
             f"crop={int(W*1.5)}:{int(H*1.5)},"
-            f"zoompan=z='min(1.0+0.0007*on,1.14)':d={nframes}:"
+            f"zoompan=z='min(1.0+0.0007*on,1.14)':d=1:"
             f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},"
             f"eq=brightness=-0.06:saturation=1.05,"
             f"drawbox=x=0:y={box_y}:w={W}:h={box_h}:color=black@0.5:t=fill,"
