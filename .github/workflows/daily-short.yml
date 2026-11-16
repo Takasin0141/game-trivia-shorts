@@ -14,7 +14,7 @@ on:
         default: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-and-upload:
@@ -43,6 +43,17 @@ jobs:
           name: daily-short
           path: out/video.mp4
           retention-days: 7
+
+      - name: Commit preview (manual runs only)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          mkdir -p preview
+          cp out/video.mp4 preview/latest.mp4
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add preview/latest.mp4
+          git commit -m "preview: latest generated short [skip ci]" || echo "no change"
+          git push
 
       - name: Upload to YouTube
         if: ${{ github.event_name == 'schedule' || inputs.upload }}
