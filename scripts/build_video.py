@@ -66,12 +66,14 @@ def graded_image(path):
     im = im.resize((int(im.width*sr), int(im.height*sr)), Image.LANCZOS)
     x=(im.width-tw)//2; y=(im.height-th)//2
     im = im.crop((x,y,x+tw,y+th)).convert("RGBA")
-    # 暗めグレーディング(彩度少し上げ+全体を暗く)
-    ov = Image.new("RGBA",(tw,th),(14,10,30,120)); im=Image.alpha_composite(im,ov)
-    # 下半分スクリム(テキスト可読性)
+    # 軽いグレーディング(写真は見せる。全体はうっすらだけ暗く)
+    ov = Image.new("RGBA",(tw,th),(14,10,30,55)); im=Image.alpha_composite(im,ov)
+    # 下側スクリム(テキスト帯だけ濃く。写真は上半分を活かす)
     sc=Image.new("L",(tw,th),0); sd=ImageDraw.Draw(sc)
     for i in range(th):
-        r=i/th; sd.line([(0,i),(tw,i)], fill=int(235*max(0,(r-0.35)/0.65))) if r>0.35 else None
+        r=i/th
+        if r>0.48:
+            sd.line([(0,i),(tw,i)], fill=int(215*((r-0.48)/0.52)))
     scrim=Image.new("RGBA",(tw,th),(8,6,20,255)); scrim.putalpha(sc)
     im=Image.alpha_composite(im,scrim)
     # グレイン
@@ -173,13 +175,12 @@ def from_wikimedia_search(query, outpath):
     return None
 
 def resolve_image(scene, idx):
+    # 著作権安全のため、キュレーション済みの Commons ファイル(image_file)のみ使用。
+    # 自動検索(Openverse/Wikimedia全文検索)はファンアート等を拾うため使わない。
     out=os.path.join(TMP,f"img_{idx:02d}.jpg")
     if scene.get("image_file"):
         if from_commons_file(scene["image_file"], out): return out
-    if scene.get("image_query"):
-        if from_openverse(scene["image_query"], out): return out
-        if from_wikimedia_search(scene["image_query"], out): return out
-    return None
+    return None  # 無ければプレミアム・グラデ背景にフォールバック
 
 # ---------- tts ----------
 async def _tts(text,outpath):
